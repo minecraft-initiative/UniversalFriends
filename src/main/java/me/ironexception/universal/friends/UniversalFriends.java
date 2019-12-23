@@ -39,7 +39,7 @@ public class UniversalFriends {
      *
      * @ensures the player is added as a friend.
      */
-    public void addFriend(String name) {
+    public void addFriend(final String name) {
         setValue(name, 1);
     }
 
@@ -53,7 +53,7 @@ public class UniversalFriends {
      *
      * @ensures the player is added as a friend.
      */
-    public void addFriend(UUID uuid) {
+    public void addFriend(final UUID uuid) {
         setValue(uuid, 1);
     }
 
@@ -68,7 +68,7 @@ public class UniversalFriends {
      *
      * @ensures the player is added as an enemy.
      */
-    public void addEnemy(String name) {
+    public void addEnemy(final String name) {
         setValue(name, -1);
     }
 
@@ -82,7 +82,7 @@ public class UniversalFriends {
      *
      * @ensures the player is added as an enemy.
      */
-    public void addEnemy(UUID uuid) {
+    public void addEnemy(final UUID uuid) {
         setValue(uuid, -1);
     }
 
@@ -97,7 +97,7 @@ public class UniversalFriends {
      *
      * @ensures the player is added as an enemy.
      */
-    public void setNeutral(String name) {
+    public void setNeutral(final String name) {
         setValue(name, 0);
     }
 
@@ -111,7 +111,7 @@ public class UniversalFriends {
      *
      * @ensures the player is added as an enemy.
      */
-    public void setNeutral(UUID uuid) {
+    public void setNeutral(final UUID uuid) {
         setValue(uuid, 0);
     }
 
@@ -125,7 +125,7 @@ public class UniversalFriends {
      *
      * @ensures the players value is changed.
      */
-    public void setValue(String name, float friendValue) {
+    public void setValue(final String name, final float friendValue) {
         // TODO implement
     }
 
@@ -138,7 +138,7 @@ public class UniversalFriends {
      *
      * @ensures the players value is changed.
      */
-    public void setValue(UUID uuid, float friendValue) {
+    public void setValue(final UUID uuid, final float friendValue) {
         // TODO implement
     }
 
@@ -152,7 +152,7 @@ public class UniversalFriends {
      *
      * @ensures that true is returned when the player is a friend.
      */
-    public boolean isFriend(String name) {
+    public boolean isFriend(final String name) {
         return getValue(name) > 0;
     }
 
@@ -165,7 +165,7 @@ public class UniversalFriends {
      *
      * @ensures that true is returned when the player is a friend.
      */
-    public boolean isFriend(UUID uuid) {
+    public boolean isFriend(final UUID uuid) {
         return getValue(uuid) > 0;
     }
 
@@ -179,7 +179,7 @@ public class UniversalFriends {
      *
      * @ensures that true is returned when the player is a enemy.
      */
-    public boolean isEnemy(String name) {
+    public boolean isEnemy(final String name) {
         return getValue(name) < 0;
     }
 
@@ -192,7 +192,7 @@ public class UniversalFriends {
      *
      * @ensures that true is returned when the player is a enemy.
      */
-    public boolean isEnemy(UUID uuid) {
+    public boolean isEnemy(final UUID uuid) {
         return getValue(uuid) < 0;
     }
 
@@ -207,7 +207,7 @@ public class UniversalFriends {
      *
      * @ensures that true is returned when the player is neutral.
      */
-    public boolean isNeutral(String name) {
+    public boolean isNeutral(final String name) {
         return getValue(name) == 0;
     }
 
@@ -221,7 +221,7 @@ public class UniversalFriends {
      *
      * @ensures that true is returned when the player is neutral.
      */
-    public boolean isNeutral(UUID uuid) {
+    public boolean isNeutral(final UUID uuid) {
         return getValue(uuid) == 0;
     }
 
@@ -235,7 +235,7 @@ public class UniversalFriends {
      *
      * @ensures that the value of the player is returned.
      */
-    public float getValue(String name) {
+    public float getValue(final String name) {
         // TODO implement
         return 0;
     }
@@ -249,7 +249,7 @@ public class UniversalFriends {
      *
      * @ensures that the value of the player is returned.
      */
-    public float getValue(UUID uuid) {
+    public float getValue(final UUID uuid) {
         // TODO implement
         return 0;
     }
@@ -264,7 +264,7 @@ public class UniversalFriends {
      *
      * @ensures that true is returned when the player doesn't have a value assigned to it.
      */
-    public boolean hasAValue(String name) {
+    public boolean hasAValue(final String name) {
         // TODO implement
         return false;
     }
@@ -278,7 +278,7 @@ public class UniversalFriends {
      *
      * @ensures that true is returned when the player doesn't have a value assigned to it.
      */
-    public boolean hasAValue(UUID uuid) {
+    public boolean hasAValue(final UUID uuid) {
         // TODO implement
         return false;
     }
