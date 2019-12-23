@@ -1,4 +1,4 @@
-package me.ironexception.universal.friends;
+package me.ironexception.universalfriends;
 
 
 import java.util.UUID;
