@@ -49,6 +49,11 @@ public class Person implements IPerson {
         return value;
     }
 
+    @Override
+    public void setValue(final double value) {
+        this.value = value;
+    }
+
     /**
      * Basically converts the value into a usable enum.
      *
@@ -58,12 +63,6 @@ public class Person implements IPerson {
     public Association getAssociation() {
         return getValue() == 0 ? Association.NEUTRAL : (getValue() > 0) ? Association.ALLY : Association.ENEMY;
     }
-
-    @Override
-    public void setValue(final double value) {
-        this.value = value;
-    }
-
 
     /**
      * Converts the enum into the value.

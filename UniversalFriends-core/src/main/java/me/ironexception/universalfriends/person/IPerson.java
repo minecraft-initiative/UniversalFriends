@@ -25,16 +25,16 @@ public interface IPerson {
     double getValue();
 
     /**
-     * @return The user's association with the person.
-     */
-    Association getAssociation();
-
-    /**
      * Changes the user's value to the person.
      *
      * @param value The new value.
      */
     void setValue(double value);
+
+    /**
+     * @return The user's association with the person.
+     */
+    Association getAssociation();
 
     /**
      * Changes the user's association with the person.
