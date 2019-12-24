@@ -4,6 +4,10 @@ import me.ironexception.universalfriends.person.IPerson;
 
 import java.util.List;
 
+/**
+ * Represents the friend file
+ * @param <T>   The class this {@link Configuration} uses to represent persons
+ */
 public class Configuration<T extends IPerson> {
 
     private final Meta meta;
@@ -14,10 +18,18 @@ public class Configuration<T extends IPerson> {
         this.list = list;
     }
 
+    /**
+     * Returns the friend list
+     * @return  the friend list
+     */
     public List<T> getList() {
         return list;
     }
 
+    /**
+     * Returns the friend file's meta
+     * @return  the meta
+     */
     public Meta getMeta() {
         return meta;
     }
