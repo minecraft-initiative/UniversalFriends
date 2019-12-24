@@ -46,7 +46,7 @@ public enum Association {
      * This is like the friendliness level.
      * </p>
      *
-     * @param value THe friendliness value closest to the actual relation.
+     * @param value The friendliness value closest to the actual relation.
      * @return The association related to the value.
      * @author 086
      */
