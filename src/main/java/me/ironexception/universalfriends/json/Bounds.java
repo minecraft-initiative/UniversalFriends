@@ -1,14 +1,14 @@
 package me.ironexception.universalfriends.json;
 
 /**
- * Represents the friend file's meta. This class carries friendliness values' maximum and minimum, which is defined as <code>2</code> and <code>-2</code>, respectively, by the standard.
+ * Represents the friend file's bounds. This class carries friendliness values' maximum and minimum, which is defined as <code>2</code> and <code>-2</code>, respectively, by the standard.
  */
-public class Meta {
+public class Bounds {
 
     private final double minimum;
     private final double maximum;
 
-    public Meta(double minimum, double maximum) {
+    public Bounds(double minimum, double maximum) {
         this.minimum = minimum;
         this.maximum = maximum;
 

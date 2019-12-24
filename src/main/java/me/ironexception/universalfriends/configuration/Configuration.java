@@ -1,6 +1,6 @@
 package me.ironexception.universalfriends.configuration;
 
-import me.ironexception.universalfriends.json.Meta;
+import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.person.IPerson;
 
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.List;
  */
 public class Configuration<T extends IPerson> {
 
-    private final Meta meta;
+    private final Bounds bounds;
     private final List<T> list;
 
-    public Configuration(Meta meta, List<T> list) {
-        this.meta = meta;
+    public Configuration(Bounds bounds, List<T> list) {
+        this.bounds = bounds;
         this.list = list;
     }
 
@@ -28,11 +28,11 @@ public class Configuration<T extends IPerson> {
     }
 
     /**
-     * Returns the friend file's meta
-     * @return  the meta
+     * Returns the friend file's bounds
+     * @return  the bounds
      */
-    public Meta getMeta() {
-        return meta;
+    public Bounds getBounds() {
+        return bounds;
     }
 
 }

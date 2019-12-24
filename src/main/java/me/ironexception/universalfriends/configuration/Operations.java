@@ -1,6 +1,6 @@
 package me.ironexception.universalfriends.configuration;
 
-import me.ironexception.universalfriends.json.Meta;
+import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.person.IPerson;
 
 import java.util.function.Consumer;
@@ -43,14 +43,14 @@ public class Operations {
      * @return              The mutated {@link Configuration}
      */
     public static <T extends IPerson> Configuration<T> introduceNewSafe(Configuration<T> configuration, T person) {
-        Meta meta = configuration.getMeta();
+        Bounds bounds = configuration.getBounds();
         configuration.getList().add(person);
         double value = person.getValue();
         double multiplier;
-        if (value < meta.getMinimum()) {
-            multiplier = meta.getMinimum() / value;
-        } else if (value > meta.getMaximum()) {
-            multiplier = meta.getMaximum() / value;
+        if (value < bounds.getMinimum()) {
+            multiplier = bounds.getMinimum() / value;
+        } else if (value > bounds.getMaximum()) {
+            multiplier = bounds.getMaximum() / value;
         } else {
             return configuration; // This value is within bounds, we do not need to (re)scale the configuration.
         }

@@ -73,7 +73,7 @@ public class PersonLoader {
         } catch (Exception e) {
             throw new PersonLoaderException("Root element of friends file must be a JSON object", e);
         }
-        Meta meta = gson.fromJson(rootObject.get("meta"), Meta.class);
+        Bounds bounds = gson.fromJson(rootObject.get("bounds"), Bounds.class);
         Type friendType = new TypeToken<T>(){}.getType();
         List<T> friends = new ArrayList<>();
         if (rootObject.has("list")) {
@@ -88,7 +88,7 @@ public class PersonLoader {
                 friends.add(gson.fromJson(element, personClass));
             }
         }
-        return new Configuration<T>(meta, friends);
+        return new Configuration<T>(bounds, friends);
     }
 
 }

@@ -32,10 +32,10 @@ class PersonLoaderTest {
         });
         Configuration<Person> configuration = atomicConfiguration.get();
 
-        // All meta (minimum, maximum) values must be correct
-        Meta meta = configuration.getMeta();
-        assertEquals(-2, meta.getMinimum(), "Meta minimum value");
-        assertEquals(2, meta.getMaximum(), "Meta maximum value");
+        // All bounds (minimum, maximum) values must be correct
+        Bounds bounds = configuration.getBounds();
+        assertEquals(-2, bounds.getMinimum(), "Bounds minimum value");
+        assertEquals(2, bounds.getMaximum(), "Bounds maximum value");
 
         // The persons list must exist and be of size 1
         List<Person> personList = configuration.getList();

@@ -23,7 +23,7 @@ The standard file format is JSON.
 
 This is the friends file. It has the following structure:
 * Root (_JSON Object_)
-  * `meta` (_JSON Object_)
+  * `bounds` (_JSON Object_)
     * `minimum` (_JSON Number_) A number equal to `-2`, as defined by the minimum value of friendliness.
     * `maximum` (_JSON Number_) A number equal to `2`, as defined by the maximum value of friendliness.
   * `list` (_JSON Array_)
