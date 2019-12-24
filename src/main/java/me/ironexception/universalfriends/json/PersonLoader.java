@@ -3,6 +3,7 @@ package me.ironexception.universalfriends.json;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import me.ironexception.universalfriends.UniversalFriends;
+import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.person.IPerson;
 import me.ironexception.universalfriends.person.Person;
 
