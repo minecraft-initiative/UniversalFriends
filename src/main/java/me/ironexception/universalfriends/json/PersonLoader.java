@@ -14,6 +14,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class to load JSON files containing standardised person (friend) data
+ * @see PersonLoader#loader()
+ * @see PersonLoader#loadFriendConfiguration()
+ */
 public class PersonLoader {
 
     private final Path path;
@@ -22,14 +27,28 @@ public class PersonLoader {
         this.path = path;
     }
 
+    /**
+     * Creates a new {@link PersonLoader} reading from the standardised, default file name for person data. The current working directory is assumed to be the home of the file to read from.
+     * @return The created {@link PersonLoader}
+     */
     public static PersonLoader loader() {
         return loader(Paths.get(UniversalFriends.STANDARD_FILE_NAME));
     }
 
+    /**
+     * Creates a new {@link PersonLoader} from a custom path
+     * @param path  The path to read from
+     * @return      The created {@link PersonLoader}
+     */
     public static PersonLoader loader(Path path) {
         return new PersonLoader(path);
     }
 
+    /**
+     * @return                          A {@link Configuration} representing the loaded file
+     * @throws IOException              If something went wrong while reading the file. This can happen if the file doesn't exist or the process doesn't have access to it.
+     * @throws PersonLoaderException    If the file did not adhere to the standard
+     */
     public Configuration<IPerson> loadFriendConfiguration() throws IOException, PersonLoaderException {
         return loadFriendConfiguration(Files.newInputStream(path));
     }
