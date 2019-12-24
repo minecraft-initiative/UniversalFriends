@@ -1,5 +1,7 @@
 package me.ironexception.universalfriends.association;
 
+import me.ironexception.universalfriends.Standard;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -14,17 +16,17 @@ public enum Association {
     /**
      * Unable to be attacked.
      */
-    ALLY(1),
+    ALLY(Standard.STANDARD_ALLY),
 
     /**
      * Targeted upon.
      */
-    ENEMY(-1),
+    ENEMY(Standard.STANDARD_ENEMY),
 
     /**
      * Acts as any other player.
      */
-    NEUTRAL(0);
+    NEUTRAL(Standard.STANDARD_NEUTRAL);
 
     /**
      * The friendliness value of the association.
@@ -55,6 +57,7 @@ public enum Association {
      * <p>Edge cases: <code>0.5</code> becomes {@link Association#ALLY} and <code>-0.5</code> becomes {@link Association#ENEMY}</p>
      * @param value The friendliness value
      * @return      The {@link Association} with a friendliness value closest to the provided value
+     * @author 086
      */
     public static Association closestToValue(double value) {
         if (value == Double.MIN_VALUE) return Association.ENEMY;

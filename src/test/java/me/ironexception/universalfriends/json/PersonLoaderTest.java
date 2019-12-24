@@ -1,6 +1,6 @@
 package me.ironexception.universalfriends.json;
 
-import me.ironexception.universalfriends.UniversalFriends;
+import me.ironexception.universalfriends.Standard;
 import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.person.IPerson;
@@ -23,7 +23,7 @@ class PersonLoaderTest {
     @DisplayName("General loading of persons")
     void loadFriendConfiguration() throws URISyntaxException {
         // Construct a loader to load from the friends.json file in the resources directory
-        PersonLoader loader = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource(UniversalFriends.STANDARD_FILE_NAME).toURI()));
+        PersonLoader loader = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource(Standard.STANDARD_FILE_NAME).toURI()));
 
         // Make sure no exceptions are thrown while reading the file
         AtomicReference<Configuration<Person>> atomicConfiguration = new AtomicReference<>();

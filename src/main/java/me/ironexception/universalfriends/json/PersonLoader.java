@@ -2,7 +2,7 @@ package me.ironexception.universalfriends.json;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import me.ironexception.universalfriends.UniversalFriends;
+import me.ironexception.universalfriends.Standard;
 import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.person.IPerson;
 import me.ironexception.universalfriends.person.Person;
@@ -34,7 +34,7 @@ public class PersonLoader {
      * @return The created {@link PersonLoader}
      */
     public static PersonLoader loader() {
-        return loader(Paths.get(UniversalFriends.STANDARD_FILE_NAME));
+        return loader(Paths.get(Standard.STANDARD_FILE_NAME));
     }
 
     /**
