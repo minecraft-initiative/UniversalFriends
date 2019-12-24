@@ -19,9 +19,9 @@ An entry to the friend list. A person must be accompanied by the following attri
 ## Files
 The standard file format is JSON.
 
-* `friends.json`
+> `friends.json`
 
-`friends.json` contains all information about a friends file. It has the following structure:
+This is the friends file. It has the following structure:
 * Root (_JSON Object_)
   * `meta` (_JSON Object_)
     * `minimum` (_JSON Number_) A number equal to `-2`, as defined by the minimum value of friendliness.
@@ -52,13 +52,13 @@ The friendliness value can be placed on a scale from `-2` to, and with, `2`
 #### Conversions
 The following conversions must be made when converting persons from a boolean-based system:
 
-#### Enemies
+##### Enemies
 |Enemy|Friendliness|
 |-----|--------|
 |false|0       |
 |true |-1      |
 
-#### Friends
+##### Friends
 |Friend|Friendliness|
 |------|------------|
 |false |0           |
