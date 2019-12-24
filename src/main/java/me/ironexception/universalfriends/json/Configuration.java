@@ -1,10 +1,10 @@
 package me.ironexception.universalfriends.json;
 
-import me.ironexception.universalfriends.IFriend;
+import me.ironexception.universalfriends.friend.IPerson;
 
 import java.util.List;
 
-public class Configuration<T extends IFriend> {
+public class Configuration<T extends IPerson> {
 
     private final Meta meta;
     private final List<T> list;

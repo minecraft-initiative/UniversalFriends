@@ -2,8 +2,9 @@ package me.ironexception.universalfriends.json;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import me.ironexception.universalfriends.Friend;
 import me.ironexception.universalfriends.UniversalFriends;
+import me.ironexception.universalfriends.friend.IPerson;
+import me.ironexception.universalfriends.friend.Person;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -29,15 +30,15 @@ public class FriendLoader {
         return new FriendLoader(path);
     }
 
-    public Configuration<Friend> loadFriendConfiguration() throws IOException, FriendLoadException {
+    public Configuration<IPerson> loadFriendConfiguration() throws IOException, FriendLoadException {
         return loadFriendConfiguration(Files.newInputStream(path));
     }
 
-    public Configuration<Friend> loadFriendConfiguration(InputStream stream) throws FriendLoadException {
+    public Configuration<IPerson> loadFriendConfiguration(InputStream stream) throws FriendLoadException {
         return loadFriendConfiguration(new BufferedReader(new InputStreamReader(stream)));
     }
 
-    public Configuration<Friend> loadFriendConfiguration(Reader reader) throws FriendLoadException {
+    public Configuration<IPerson> loadFriendConfiguration(Reader reader) throws FriendLoadException {
         final Gson gson = new Gson();
         JsonElement jsonElement = new JsonParser().parse(reader);
         JsonObject rootObject;
@@ -47,8 +48,8 @@ public class FriendLoader {
             throw new FriendLoadException("Root element of friends file must be a JSON object", e);
         }
         Meta meta = gson.fromJson(rootObject.get("meta"), Meta.class);
-        Type friendType = new TypeToken<Friend>(){}.getType();
-        List<Friend> friends = new ArrayList<>();
+        Type friendType = new TypeToken<Person>(){}.getType();
+        List<IPerson> friends = new ArrayList<>();
         if (rootObject.has("list")) {
             JsonElement listElement = rootObject.get("list");
             JsonArray list;
@@ -58,7 +59,7 @@ public class FriendLoader {
                 throw new FriendLoadException("List element of friends file must be a JSON array", e);
             }
             for (JsonElement element : list) {
-                friends.add(gson.fromJson(element, Friend.class));
+                friends.add(gson.fromJson(element, Person.class));
             }
         }
         return new Configuration<>(meta, friends);
