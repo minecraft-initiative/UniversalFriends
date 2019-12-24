@@ -22,6 +22,8 @@ import java.util.UUID;
  */
 public class UniversalFriends {
 
+    public static String STANDARD_FILE_NAME = "friends.json";
+
     /**
      * // TODO
      */
