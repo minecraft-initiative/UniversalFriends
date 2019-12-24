@@ -1,5 +1,6 @@
 package me.ironexception.universalfriends.configuration;
 
+import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.json.PersonLoader;
 import me.ironexception.universalfriends.json.PersonLoaderException;
 import me.ironexception.universalfriends.person.IPerson;
@@ -28,6 +29,24 @@ class OperationsTest {
     @DisplayName("Get by range")
     void getInFriendlinessRange() {
         assertEquals(2, Operations.getInFriendlinessRange(configuration, 0, 2).size());
+    }
+
+    @Test
+    @DisplayName("Get by friendliness")
+    void getByFriendliness() {
+        assertEquals("bar", Operations.getByFriendliness(configuration, 2).get(0).getName());
+    }
+
+    @Test
+    @DisplayName("Get by close to association")
+    void getByCloseToAssociation() {
+        assertEquals("bar", Operations.getByCloseToAssociation(configuration, Association.ALLY).get(0).getName());
+    }
+
+    @Test
+    @DisplayName("Get by association")
+    void getByAssociation() {
+        assertEquals("baz", Operations.getByAssociation(configuration, Association.ENEMY).get(0).getName());
     }
 
 }

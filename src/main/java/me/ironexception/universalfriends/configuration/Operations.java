@@ -1,5 +1,6 @@
 package me.ironexception.universalfriends.configuration;
 
+import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.person.IPerson;
 
@@ -9,6 +10,19 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Operations {
+
+    public static <T extends IPerson> List<T> getByFriendliness(Configuration<T> configuration, double value) {
+        return filterMatchingPersons(configuration, t -> t.getValue() == value);
+    }
+
+    public static <T extends IPerson> List<T> getByCloseToAssociation(Configuration<T> configuration, Association association) {
+        return filterMatchingPersons(configuration, t -> Association.closestToValue(t.getValue()) == association);
+    }
+
+    public static <T extends IPerson> List<T> getByAssociation(Configuration<T> configuration, Association association) {
+        double value = association.getValue();
+        return getByFriendliness(configuration, value);
+    }
 
     public static <T extends IPerson> List<T> getInFriendlinessRange(Configuration<T> configuration, double rangeLower, double rangeUpper) {
         return filterMatchingPersons(configuration, t -> t.getValue() >= rangeLower && t.getValue() <= rangeUpper);
