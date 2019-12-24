@@ -1,5 +1,6 @@
 package me.ironexception.universalfriends.configuration;
 
+import me.ironexception.universalfriends.Standard;
 import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.person.IPerson;
@@ -18,6 +19,32 @@ public class Operations {
 
     public static <T extends IPerson> Set<T> getByCloseToAssociation(Configuration<T> configuration, Association association) {
         return filterMatchingPersons(configuration, t -> Association.closestToValue(t.getValue()) == association);
+    }
+
+    /**
+     * Gives you a set of all your friends. No matter how friendly they are.
+     * The difference to {@link Operations#getByCloseToAssociation} is that you also get players with the
+     * friendliness value between excluding 0 and 0.5.
+     *
+     * @param configuration the config.
+     * @param <T>
+     * @return all players that are saved as your friends. No matter how friendly they are.
+     */
+    public static <T extends IPerson> Set<T> getAllFriends(final Configuration<T> configuration) {
+        return getInFriendlinessRange(configuration, Standard.STANDARD_NEUTRAL, Standard.STANDARD_MAX_FRIENDLINESS);
+    }
+
+    /**
+     * Gives you a set of all your enemies. No matter how hostile they are.
+     * The difference to {@link Operations#getByCloseToAssociation} is that you also get players with the
+     * friendliness value between -0.5 and excluding 0.
+     *
+     * @param configuration the config.
+     * @param <T>
+     * @return all players that are saved as your enemy. No matter how hostile they are.
+     */
+    public static <T extends IPerson> Set<T> getAllEnemies(final Configuration<T> configuration) {
+        return getInFriendlinessRange(configuration, Standard.STANDARD_MIN_FRIENDLINESS, Standard.STANDARD_NEUTRAL);
     }
 
     public static <T extends IPerson> Set<T> getByAssociation(Configuration<T> configuration, Association association) {
