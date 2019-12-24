@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Utility class to load JSON files containing standardised person (friend) data
+ *
  * @see PersonLoader#loader()
  * @see PersonLoader#loadFriendConfiguration()
  */
