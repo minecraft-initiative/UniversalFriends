@@ -3,10 +3,20 @@ package me.ironexception.universalfriends.configuration;
 import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.person.IPerson;
 
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Operations {
+
+    public static <T extends IPerson> List<T> getInFriendlinessRange(Configuration<T> configuration, double rangeLower, double rangeUpper) {
+        return filterMatchingPersons(configuration, t -> t.getValue() >= rangeLower && t.getValue() <= rangeUpper);
+    }
+
+    public static <T extends IPerson> List<T> filterMatchingPersons(Configuration<T> configuration, Predicate<T> predicate) {
+        return configuration.getList().stream().filter(predicate).collect(Collectors.toList());
+    }
 
     /**
      * <p>
