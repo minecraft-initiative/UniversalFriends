@@ -1,5 +1,6 @@
-package me.ironexception.universalfriends.json;
+package me.ironexception.universalfriends.configuration;
 
+import me.ironexception.universalfriends.json.Meta;
 import me.ironexception.universalfriends.person.IPerson;
 
 import java.util.List;

@@ -2,6 +2,7 @@ package me.ironexception.universalfriends.json;
 
 import me.ironexception.universalfriends.UniversalFriends;
 import me.ironexception.universalfriends.association.Association;
+import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.person.IPerson;
 import org.junit.jupiter.api.Test;
 
