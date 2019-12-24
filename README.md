@@ -1,7 +1,8 @@
 # UniversalFriends
-A library that aims at having friends that are the same for each client.
+A library that aims at having friends that are the same for each utility mod, such as [forgehax](https://github.com/fr1kin/ForgeHax) and [wwe](https://wweclient.com/). 
 
-This repository tries to make it possible for all clients to use the same friends list. Because it is annoying to manually set them for each client.
-In addition it makes it possible to give players a different level of friendship. Also enemies can be saved.
+Critism and discussion is welcome. Join the [discord](https://discord.gg/JNjnpBu) for discussion.
 
-Criticism and discussion are welcome. :)
+## Planned:
+Option to give players a different level of friendship, along with a neutral. Also enemies can be saved.
+
