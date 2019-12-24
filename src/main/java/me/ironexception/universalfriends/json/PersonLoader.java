@@ -46,20 +46,25 @@ public class PersonLoader {
         return new PersonLoader(path);
     }
 
+    public Configuration<IPerson> loadFriendConfiguration() throws IOException, PersonLoaderException {
+        return loadFriendConfiguration(IPerson.class);
+    }
+
     /**
      * @return                          A {@link Configuration} representing the loaded file
+     * @param <T>                       The type of {@link IPerson} to load
      * @throws IOException              If something went wrong while reading the file. This can happen if the file doesn't exist or the process doesn't have access to it.
      * @throws PersonLoaderException    If the file did not adhere to the standard
      */
-    public Configuration<IPerson> loadFriendConfiguration() throws IOException, PersonLoaderException {
-        return loadFriendConfiguration(Files.newInputStream(path));
+    public <T extends IPerson> Configuration<T> loadFriendConfiguration(Class<T> personClass) throws IOException, PersonLoaderException {
+        return loadFriendConfiguration(Files.newInputStream(path), personClass);
     }
 
-    public Configuration<IPerson> loadFriendConfiguration(InputStream stream) throws PersonLoaderException {
-        return loadFriendConfiguration(new BufferedReader(new InputStreamReader(stream)));
+    public <T extends IPerson> Configuration<T> loadFriendConfiguration(InputStream stream, Class<T> personClass) throws PersonLoaderException {
+        return loadFriendConfiguration(new BufferedReader(new InputStreamReader(stream)), personClass);
     }
 
-    public Configuration<IPerson> loadFriendConfiguration(Reader reader) throws PersonLoaderException {
+    public <T extends IPerson> Configuration<T> loadFriendConfiguration(Reader reader, Class<T> personClass) throws PersonLoaderException {
         final Gson gson = new Gson();
         JsonElement jsonElement = new JsonParser().parse(reader);
         JsonObject rootObject;
@@ -69,8 +74,8 @@ public class PersonLoader {
             throw new PersonLoaderException("Root element of friends file must be a JSON object", e);
         }
         Meta meta = gson.fromJson(rootObject.get("meta"), Meta.class);
-        Type friendType = new TypeToken<Person>(){}.getType();
-        List<IPerson> friends = new ArrayList<>();
+        Type friendType = new TypeToken<T>(){}.getType();
+        List<T> friends = new ArrayList<>();
         if (rootObject.has("list")) {
             JsonElement listElement = rootObject.get("list");
             JsonArray list;
@@ -80,10 +85,10 @@ public class PersonLoader {
                 throw new PersonLoaderException("List element of friends file must be a JSON array", e);
             }
             for (JsonElement element : list) {
-                friends.add(gson.fromJson(element, Person.class));
+                friends.add(gson.fromJson(element, personClass));
             }
         }
-        return new Configuration<>(meta, friends);
+        return new Configuration<T>(meta, friends);
     }
 
 }
