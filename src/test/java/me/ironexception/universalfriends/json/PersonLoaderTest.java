@@ -29,8 +29,8 @@ class PersonLoaderTest {
 
         // All meta (minimum, maximum) values must be correct
         Meta meta = configuration.getMeta();
-        assertEquals(-1, meta.getMinimum(), "Meta minimum value");
-        assertEquals(1, meta.getMaximum(), "Meta maximum value");
+        assertEquals(-2, meta.getMinimum(), "Meta minimum value");
+        assertEquals(2, meta.getMaximum(), "Meta maximum value");
 
         // The persons list must exist and be of size 1
         List<IPerson> personList = configuration.getList();
