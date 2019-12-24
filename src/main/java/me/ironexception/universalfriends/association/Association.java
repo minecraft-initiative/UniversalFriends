@@ -25,7 +25,10 @@ public enum Association {
      */
     NEUTRAL(0);
 
-    double value;
+    /**
+     * The friendliness value of the association.
+     */
+    private final double value;
 
     Association(double value) {
         this.value = value;
@@ -38,8 +41,14 @@ public enum Association {
     /**
      * Fetch a {@link Association} by its value.
      * Might return null if there is no corresponding
-     * @param value
-     * @return
+     *
+     * <p>
+     * This is like the friendliness level.
+     * </p>
+     *
+     * @param value THe friendliness value closest to the actual relation.
+     * @return The association related to the value.
+     * @author 086
      */
     public static Association byValue(double value) {
         return Arrays.stream(values()).filter(association -> association.getValue() == value).findAny().orElseGet(null);
