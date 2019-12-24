@@ -65,4 +65,19 @@ public enum Association {
         return Arrays.stream(values()).min(Comparator.comparingDouble(a -> Math.abs(a.value - value))).get();
     }
 
+    /**
+     * Fetch the {@link Association} convert value to association.
+     * No matter how friendly someone is as long as he is friendly he gets the ally association. The same goes for enemies.
+     * So values below 0 are enemies and above are allies.
+     *
+     * @param value The friendliness value
+     * @return      The {@link Association} with a friendliness value depending to the provided value
+     * @author IronException
+     */
+    public static Association convertValueToAssociation(double value) {
+        if (value < 0) return Association.ENEMY;
+        if (value > 0) return Association.ALLY;
+        return Association.NEUTRAL;
+    }
+
 }
