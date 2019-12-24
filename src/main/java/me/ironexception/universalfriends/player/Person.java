@@ -72,11 +72,6 @@ public class Person implements IPerson {
      */
     @Override
     public void setAssociation(final Association association) {
-        if(association == Association.NEUTRAL)
-            value = 0;
-        else if(association == Association.ALLY)
-            value = 1;
-        else if(association == Association.ENEMY)
-            value = -1;
+        this.value = association.getValue();
     }
 }
