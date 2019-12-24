@@ -9,31 +9,36 @@ import java.util.function.Predicate;
 public class Operations {
 
     /**
-     * Introduces a new {@link IPerson} to a {@link Configuration}, making sure the friendliness value bounds are satisfied.
      * <p>
+     *     Introduces a new {@link IPerson} to a {@link Configuration}, making sure the friendliness value bounds are satisfied.
+     * </p>
      *
-     * If the friendliness value of the new {@link IPerson} exceeds the standardised bounds (minimum <code>-2</code> and maximum <code>2</code>), it will be scaled down to the nearest boundary.
-     * All other persons in this configuration will be scaled down by the same amount.
      * <p>
+     *     If the friendliness value of the new {@link IPerson} exceeds the standardised bounds (minimum <code>-2</code> and maximum <code>2</code>), it will be scaled down to the nearest boundary.
+     *     All other persons in this configuration will be scaled down by the same amount.
+     * </p>
      *
-     * For example, a friends list with the following friendliness values:
-     * <ul>
-     *     <li>1</li>
-     *     <li>0</li>
-     *     <li>-2</li>
-     * </ul>
-     * We introduce a new {@link IPerson} with a friendliness value of <code>4</code>:
-     * <ul>
-     *     <li>...</li>
-     *     <li>4</li>
-     * </ul>
-     * Because <code>4</code> is out of bounds, it is brought down to the nearest boundary of value <code>2</code>. This represents a multiplication by <code>0.5</code>. All friendliness values within the friends list will be multiplied by that amount. We end up with a new list where all the proportions between friendliness values have stayed the same.
-     * <ul>
-     *     <li>0.5</li>
-     *     <li>0</li>
-     *     <li>-1</li>
-     *     <li>2</li>
-     * </ul>
+     * <p>
+     *     For example, a friends list with the following friendliness values:
+     *     <ul>
+     *         <li>1</li>
+     *         <li>0</li>
+     *         <li>-2</li>
+     *     </ul>
+     *     We introduce a new {@link IPerson} with a friendliness value of <code>4</code>:
+     *     <ul>
+     *         <li>...</li>
+     *         <li>4</li>
+     *     </ul>
+     *     Because <code>4</code> is out of bounds, it is brought down to the nearest boundary of value <code>2</code>. This represents a multiplication by <code>0.5</code>. All friendliness values within the friends list will be multiplied by that amount. We end up with a new list where all the proportions between friendliness values have stayed the same.
+     *     <ul>
+     *         <li>0.5</li>
+     *         <li>0</li>
+     *         <li>-1</li>
+     *         <li>2</li>
+     *     </ul>
+     * </p>
+     *
      * @param configuration The {@link Configuration} to mutate
      * @param person        The {@link IPerson} to add
      * @param <T>           The type of {@link IPerson} this configuration holds
