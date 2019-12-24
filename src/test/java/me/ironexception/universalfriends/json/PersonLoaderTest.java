@@ -1,7 +1,7 @@
 package me.ironexception.universalfriends.json;
 
 import me.ironexception.universalfriends.UniversalFriends;
-import me.ironexception.universalfriends.player.IPerson;
+import me.ironexception.universalfriends.person.IPerson;
 import org.junit.jupiter.api.Test;
 
 import java.net.URISyntaxException;

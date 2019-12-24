@@ -1,4 +1,4 @@
-package me.ironexception.universalfriends.player;
+package me.ironexception.universalfriends.person;
 
 import me.ironexception.universalfriends.association.Association;
 

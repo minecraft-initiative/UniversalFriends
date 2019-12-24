@@ -3,8 +3,8 @@ package me.ironexception.universalfriends.json;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import me.ironexception.universalfriends.UniversalFriends;
-import me.ironexception.universalfriends.player.IPerson;
-import me.ironexception.universalfriends.player.Person;
+import me.ironexception.universalfriends.person.IPerson;
+import me.ironexception.universalfriends.person.Person;
 
 import java.io.*;
 import java.lang.reflect.Type;

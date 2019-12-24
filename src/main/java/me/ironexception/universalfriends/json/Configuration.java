@@ -1,6 +1,6 @@
 package me.ironexception.universalfriends.json;
 
-import me.ironexception.universalfriends.player.IPerson;
+import me.ironexception.universalfriends.person.IPerson;
 
 import java.util.List;
 
