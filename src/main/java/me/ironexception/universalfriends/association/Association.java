@@ -57,6 +57,8 @@ public enum Association {
      * @return      The {@link Association} with a friendliness value closest to the provided value
      */
     public static Association closestToValue(double value) {
+        if (value == Double.MIN_VALUE) return Association.ENEMY;
+        if (value == Double.MAX_VALUE) return Association.ALLY;
         return Arrays.stream(values()).min(Comparator.comparingDouble(a -> Math.abs(a.value - value))).get();
     }
 

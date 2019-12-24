@@ -18,7 +18,7 @@ class AssociationTest {
     @Test
     void closestToValue() {
         final double[] convergeToEnemy = new double[] {
-                //Double.MIN_VALUE,
+                Double.MIN_VALUE,
                 -2,
                 -1,
                 -0.5
@@ -34,7 +34,7 @@ class AssociationTest {
                 0.5,
                 1,
                 2,
-                //Double.MAX_VALUE
+                Double.MAX_VALUE
         };
 
         for (double v : convergeToEnemy) {
