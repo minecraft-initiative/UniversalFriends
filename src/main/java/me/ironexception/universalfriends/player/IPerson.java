@@ -1,4 +1,4 @@
-package me.ironexception.universalfriends.friend;
+package me.ironexception.universalfriends.player;
 
 import me.ironexception.universalfriends.association.Association;
 
@@ -20,9 +20,21 @@ public interface IPerson {
     UUID getId();
 
     /**
+     * @return The user's value to the person.
+     */
+    float getValue();
+
+    /**
      * @return The user's association with the person.
      */
     Association getAssociation();
+
+    /**
+     * Changes the user's value to the person.
+     *
+     * @param value The new value.
+     */
+    void setValue(float value);
 
     /**
      * Changes the user's association with the person.
