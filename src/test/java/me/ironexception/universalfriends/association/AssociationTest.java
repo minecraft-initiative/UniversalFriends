@@ -16,6 +16,7 @@ class AssociationTest {
     }
 
     @Test
+    @DisplayName("Closest to value")
     void closestToValue() {
         final double[] convergeToEnemy = new double[] {
                 Double.MIN_VALUE,

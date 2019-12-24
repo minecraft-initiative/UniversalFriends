@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonLoaderTest {
 
     @Test
-    @DisplayName("Test general loading of persons")
+    @DisplayName("General loading of persons")
     void loadFriendConfiguration() throws URISyntaxException {
         // Construct a loader to load from the friends.json file in the resources directory
         PersonLoader loader = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource(UniversalFriends.STANDARD_FILE_NAME).toURI()));
@@ -51,7 +51,7 @@ class PersonLoaderTest {
     }
 
     @Test
-    @DisplayName("Test custom person types")
+    @DisplayName("Custom person types")
     void loadFriendConfigurationCustomTypes() throws IOException, PersonLoaderException, URISyntaxException {
         Configuration<CustomPerson> configuration = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource("friends_with_meta.json").toURI())).loadFriendConfiguration(CustomPerson.class);
         CustomPerson person = configuration.getList().get(0);
