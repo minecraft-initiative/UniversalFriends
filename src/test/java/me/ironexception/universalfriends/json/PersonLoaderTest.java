@@ -4,6 +4,7 @@ import me.ironexception.universalfriends.UniversalFriends;
 import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.person.IPerson;
+import me.ironexception.universalfriends.person.Person;
 import org.junit.jupiter.api.Test;
 
 import java.net.URISyntaxException;
@@ -22,11 +23,11 @@ class PersonLoaderTest {
         PersonLoader loader = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource(UniversalFriends.STANDARD_FILE_NAME).toURI()));
 
         // Make sure no exceptions are thrown while reading the file
-        AtomicReference<Configuration<IPerson>> atomicConfiguration = new AtomicReference<>();
+        AtomicReference<Configuration<Person>> atomicConfiguration = new AtomicReference<>();
         assertDoesNotThrow(() -> {
             atomicConfiguration.set(loader.loadFriendConfiguration());
         });
-        Configuration<IPerson> configuration = atomicConfiguration.get();
+        Configuration<Person> configuration = atomicConfiguration.get();
 
         // All meta (minimum, maximum) values must be correct
         Meta meta = configuration.getMeta();
@@ -34,7 +35,7 @@ class PersonLoaderTest {
         assertEquals(2, meta.getMaximum(), "Meta maximum value");
 
         // The persons list must exist and be of size 1
-        List<IPerson> personList = configuration.getList();
+        List<Person> personList = configuration.getList();
         assertNotNull(personList, "Friend list is nonnull");
         assertEquals(1, personList.size());
 

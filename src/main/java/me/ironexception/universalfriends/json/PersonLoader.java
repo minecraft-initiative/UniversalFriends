@@ -46,8 +46,8 @@ public class PersonLoader {
         return new PersonLoader(path);
     }
 
-    public Configuration<IPerson> loadFriendConfiguration() throws IOException, PersonLoaderException {
-        return loadFriendConfiguration(IPerson.class);
+    public Configuration<Person> loadFriendConfiguration() throws IOException, PersonLoaderException {
+        return loadFriendConfiguration(Person.class);
     }
 
     /**
