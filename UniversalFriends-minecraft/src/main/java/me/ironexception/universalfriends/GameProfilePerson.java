@@ -1,5 +1,6 @@
 package me.ironexception.universalfriends;
 
+import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
 import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.person.IPerson;
@@ -10,6 +11,7 @@ public class GameProfilePerson implements IPerson {
 
     GameProfile profile;
     private double value;
+    private JsonObject meta;
 
     public GameProfilePerson(GameProfile profile, double value) {
         this.profile = profile;
@@ -32,6 +34,11 @@ public class GameProfilePerson implements IPerson {
     @Override
     public UUID getId() {
         return getProfile().getId();
+    }
+
+    @Override
+    public JsonObject getMeta() {
+        return meta;
     }
 
     @Override
