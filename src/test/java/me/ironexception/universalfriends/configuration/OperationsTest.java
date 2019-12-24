@@ -34,19 +34,19 @@ class OperationsTest {
     @Test
     @DisplayName("Get by friendliness")
     void getByFriendliness() {
-        assertEquals("bar", Operations.getByFriendliness(configuration, 2).get(0).getName());
+        assertEquals("bar", Operations.getByFriendliness(configuration, 2).stream().findAny().get().getName());
     }
 
     @Test
     @DisplayName("Get by close to association")
     void getByCloseToAssociation() {
-        assertEquals("bar", Operations.getByCloseToAssociation(configuration, Association.ALLY).get(0).getName());
+        assertEquals("bar", Operations.getByCloseToAssociation(configuration, Association.ALLY).stream().findAny().get().getName());
     }
 
     @Test
     @DisplayName("Get by association")
     void getByAssociation() {
-        assertEquals("baz", Operations.getByAssociation(configuration, Association.ENEMY).get(0).getName());
+        assertEquals("baz", Operations.getByAssociation(configuration, Association.ENEMY).stream().findAny().get().getName());
     }
 
 }

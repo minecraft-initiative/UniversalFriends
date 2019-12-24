@@ -12,8 +12,8 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Utility class to load JSON files containing standardised person (friend) data
@@ -75,7 +75,7 @@ public class PersonLoader {
         }
         Bounds bounds = gson.fromJson(rootObject.get("bounds"), Bounds.class);
         Type friendType = new TypeToken<T>(){}.getType();
-        List<T> friends = new ArrayList<>();
+        Set<T> friends = new HashSet<>();
         if (rootObject.has("list")) {
             JsonElement listElement = rootObject.get("list");
             JsonArray list;

@@ -4,32 +4,33 @@ import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.person.IPerson;
 
-import java.util.List;
+import java.util.Collections;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Operations {
 
-    public static <T extends IPerson> List<T> getByFriendliness(Configuration<T> configuration, double value) {
+    public static <T extends IPerson> Set<T> getByFriendliness(Configuration<T> configuration, double value) {
         return filterMatchingPersons(configuration, t -> t.getValue() == value);
     }
 
-    public static <T extends IPerson> List<T> getByCloseToAssociation(Configuration<T> configuration, Association association) {
+    public static <T extends IPerson> Set<T> getByCloseToAssociation(Configuration<T> configuration, Association association) {
         return filterMatchingPersons(configuration, t -> Association.closestToValue(t.getValue()) == association);
     }
 
-    public static <T extends IPerson> List<T> getByAssociation(Configuration<T> configuration, Association association) {
+    public static <T extends IPerson> Set<T> getByAssociation(Configuration<T> configuration, Association association) {
         double value = association.getValue();
         return getByFriendliness(configuration, value);
     }
 
-    public static <T extends IPerson> List<T> getInFriendlinessRange(Configuration<T> configuration, double rangeLower, double rangeUpper) {
+    public static <T extends IPerson> Set<T> getInFriendlinessRange(Configuration<T> configuration, double rangeLower, double rangeUpper) {
         return filterMatchingPersons(configuration, t -> t.getValue() >= rangeLower && t.getValue() <= rangeUpper);
     }
 
-    public static <T extends IPerson> List<T> filterMatchingPersons(Configuration<T> configuration, Predicate<T> predicate) {
-        return configuration.getList().stream().filter(predicate).collect(Collectors.toList());
+    public static <T extends IPerson> Set<T> filterMatchingPersons(Configuration<T> configuration, Predicate<T> predicate) {
+        return Collections.unmodifiableSet(configuration.getFriendList().stream().filter(predicate).collect(Collectors.toSet()));
     }
 
     /**
@@ -68,7 +69,7 @@ public class Operations {
      */
     public static <T extends IPerson> Configuration<T> introduceNewSafe(Configuration<T> configuration, T person) {
         Bounds bounds = configuration.getBounds();
-        configuration.getList().add(person);
+        configuration.getFriendList().add(person);
         double value = person.getValue();
         double multiplier;
         if (value < bounds.getMinimum()) {
@@ -116,11 +117,11 @@ public class Operations {
     }
 
     private static <T extends IPerson> void consume(Configuration<T> configuration, Consumer<T> consumer) {
-        configuration.getList().forEach(consumer);
+        configuration.getFriendList().forEach(consumer);
     }
 
     private static <T extends IPerson> void consumeWithFilter(Configuration<T> configuration, Predicate<T> predicate, Consumer<T> consumer) {
-        configuration.getList().stream().filter(predicate).forEach(consumer);
+        configuration.getFriendList().stream().filter(predicate).forEach(consumer);
     }
 
 }

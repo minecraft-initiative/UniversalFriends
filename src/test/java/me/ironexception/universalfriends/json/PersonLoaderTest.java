@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -38,12 +38,12 @@ class PersonLoaderTest {
         assertEquals(2, bounds.getMaximum(), "Bounds maximum value");
 
         // The persons list must exist and be of size 1
-        List<Person> personList = configuration.getList();
+        Set<Person> personList = configuration.getFriendList();
         assertNotNull(personList, "Friend list is nonnull");
         assertEquals(1, personList.size());
 
         // The sole person in the persons list must have the correct attributes
-        IPerson person = personList.get(0);
+        Person person = personList.stream().findAny().get();
         assertEquals(person.getId(), UUID.fromString("8a2a3ef5-8d27-41b9-a69a-cbb05ac0ed1d"), "UUID is the same");
         assertEquals(person.getName(), "foo", "Name is the same");
         assertEquals(0, person.getValue(), "Value is the same");
@@ -54,7 +54,7 @@ class PersonLoaderTest {
     @DisplayName("Custom person types")
     void loadFriendConfigurationCustomTypes() throws IOException, PersonLoaderException, URISyntaxException {
         Configuration<CustomPerson> configuration = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource("friends_with_meta.json").toURI())).loadFriendConfiguration(CustomPerson.class);
-        CustomPerson person = configuration.getList().get(0);
+        CustomPerson person = configuration.getFriendList().stream().findAny().get();
         assertEquals(10, person.metaValue, "Custom meta value is correct");
     }
 

@@ -3,7 +3,7 @@ package me.ironexception.universalfriends.configuration;
 import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.person.IPerson;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * Represents the friend file
@@ -12,19 +12,19 @@ import java.util.List;
 public class Configuration<T extends IPerson> {
 
     private final Bounds bounds;
-    private final List<T> list;
+    private final Set<T> set;
 
-    public Configuration(Bounds bounds, List<T> list) {
+    public Configuration(Bounds bounds, Set<T> set) {
         this.bounds = bounds;
-        this.list = list;
+        this.set = set;
     }
 
     /**
      * Returns the friend list
      * @return  the friend list
      */
-    public List<T> getList() {
-        return list;
+    public Set<T> getFriendList() {
+        return set;
     }
 
     /**
