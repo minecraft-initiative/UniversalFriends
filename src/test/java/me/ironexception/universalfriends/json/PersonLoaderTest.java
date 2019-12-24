@@ -5,8 +5,10 @@ import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.person.IPerson;
 import me.ironexception.universalfriends.person.Person;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.List;
@@ -18,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonLoaderTest {
 
     @Test
+    @DisplayName("Test general loading of persons")
     void loadFriendConfiguration() throws URISyntaxException {
         // Construct a loader to load from the friends.json file in the resources directory
         PersonLoader loader = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource(UniversalFriends.STANDARD_FILE_NAME).toURI()));
@@ -45,6 +48,23 @@ class PersonLoaderTest {
         assertEquals(person.getName(), "foo", "Name is the same");
         assertEquals(0, person.getValue(), "Value is the same");
         assertEquals(Association.NEUTRAL, person.getAssociation(), "Inferred association is the same");
+    }
+
+    @Test
+    @DisplayName("Test custom person types")
+    void loadFriendConfigurationCustomTypes() throws IOException, PersonLoaderException, URISyntaxException {
+        Configuration<CustomPerson> configuration = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource("friends_with_meta.json").toURI())).loadFriendConfiguration(CustomPerson.class);
+        CustomPerson person = configuration.getList().get(0);
+        assertEquals(10, person.metaValue, "Custom meta value is correct");
+    }
+
+    private static class CustomPerson extends Person {
+        private final int metaValue;
+
+        public CustomPerson(UUID id, String name, double value, int metaValue) {
+            super(id, name, value);
+            this.metaValue = metaValue;
+        }
     }
 
 }
