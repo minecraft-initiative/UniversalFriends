@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "minimum": -1,
+    "maximum": 1
+  },
+  "list": [
+    {
+      "id": "8a2a3ef5-8d27-41b9-a69a-cbb05ac0ed1d",
+      "name": "foo"
+    }
+  ]
+}
