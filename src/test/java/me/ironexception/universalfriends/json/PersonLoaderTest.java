@@ -1,7 +1,7 @@
 package me.ironexception.universalfriends.json;
 
 import me.ironexception.universalfriends.UniversalFriends;
-import me.ironexception.universalfriends.friend.IPerson;
+import me.ironexception.universalfriends.player.IPerson;
 import org.junit.jupiter.api.Test;
 
 import java.net.URISyntaxException;
@@ -12,11 +12,11 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FriendLoaderTest {
+class PersonLoaderTest {
 
     @Test
     void loadFriendConfiguration() throws URISyntaxException {
-        FriendLoader loader = FriendLoader.loader(Paths.get(getClass().getClassLoader().getResource(UniversalFriends.STANDARD_FILE_NAME).toURI()));
+        PersonLoader loader = PersonLoader.loader(Paths.get(getClass().getClassLoader().getResource(UniversalFriends.STANDARD_FILE_NAME).toURI()));
         AtomicReference<Configuration<IPerson>> atomicConfiguration = new AtomicReference<>();
         assertDoesNotThrow(() -> {
             atomicConfiguration.set(loader.loadFriendConfiguration());
