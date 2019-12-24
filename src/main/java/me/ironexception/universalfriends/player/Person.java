@@ -26,9 +26,9 @@ public class Person implements IPerson {
     /**
      * The value that the person has to the user.
      */
-    private float value;
+    private double value;
 
-    public Person(final UUID id, final String name, final float value) {
+    public Person(final UUID id, final String name, final double value) {
         this.id = id;
         this.name = name;
         this.value = value;
@@ -45,7 +45,7 @@ public class Person implements IPerson {
     }
 
     @Override
-    public float getValue() {
+    public double getValue() {
         return value;
     }
 
@@ -60,7 +60,7 @@ public class Person implements IPerson {
     }
 
     @Override
-    public void setValue(final float value) {
+    public void setValue(final double value) {
         this.value = value;
     }
 

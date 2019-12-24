@@ -22,7 +22,7 @@ public interface IPerson {
     /**
      * @return The user's value to the person.
      */
-    float getValue();
+    double getValue();
 
     /**
      * @return The user's association with the person.
@@ -34,7 +34,7 @@ public interface IPerson {
      *
      * @param value The new value.
      */
-    void setValue(float value);
+    void setValue(double value);
 
     /**
      * Changes the user's association with the person.
