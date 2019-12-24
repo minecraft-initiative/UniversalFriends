@@ -1,5 +1,6 @@
 package me.ironexception.universalfriends.json;
 
+import com.google.gson.JsonObject;
 import me.ironexception.universalfriends.TestUtil;
 import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.person.Person;
@@ -30,6 +31,10 @@ class FriendFileLoaderTest {
         assertEquals("foo", person.getName());
         assertEquals("8a2a3ef5-8d27-41b9-a69a-cbb05ac0ed1d", person.getId().toString());
         assertEquals(0, person.getValue());
+
+        JsonObject meta = person.getMeta();
+        assertTrue(meta.has("displayName"), "Meta has displayName");
+        assertEquals("bar", meta.get("displayName").getAsString());
     }
 
 }
