@@ -54,8 +54,9 @@ public enum Association {
 
     /**
      * Fetch a {@link Association} by what the value means.
-     * No matter how friendly someone is as long as he is friendly he gets the ally association. The same goes for enemies.
-     * So values below 0 are enemies and above are allies.
+     * If the provided value is lower than the standardised neutral value, this method will return {@link Association#ENEMY}
+     * If the provided value is higher than the standardised neutral value, this method will return {@link Association#ALLY}
+     * If the provided value is equal to the standardised neutral value, this method will return {@link Association#NEUTRAL}
      *
      * @param value The friendliness value
      * @return      The {@link Association} with a friendliness value depending to the provided value
