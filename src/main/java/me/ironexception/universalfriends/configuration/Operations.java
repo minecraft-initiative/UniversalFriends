@@ -22,7 +22,7 @@ public class Operations {
      * @return all players that are saved as your friends. No matter how friendly they are.
      */
     public static <T extends IPerson> Set<T> getAllFriends(final Configuration<T> configuration) {
-        return getInFriendlinessRange(configuration, Standard.STANDARD_NEUTRAL, Standard.STANDARD_MAX_FRIENDLINESS);
+        return filterMatchingPersons(configuration, t -> t.getValue() > Standard.STANDARD_NEUTRAL);
     }
 
     /**
@@ -33,7 +33,7 @@ public class Operations {
      * @return all players that are saved as your enemy. No matter how hostile they are.
      */
     public static <T extends IPerson> Set<T> getAllEnemies(final Configuration<T> configuration) {
-        return getInFriendlinessRange(configuration, Standard.STANDARD_MIN_FRIENDLINESS, Standard.STANDARD_NEUTRAL);
+        return filterMatchingPersons(configuration, t -> t.getValue() < Standard.STANDARD_NEUTRAL);
     }
 
     /**
