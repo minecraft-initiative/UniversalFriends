@@ -42,13 +42,13 @@ public enum Association {
     }
 
     /**
-     * Fetch a {@link Association} by its value.
+     * Fetch a {@link Association} by its exact value.
      *
      * @param value The friendliness value
      * @return The association related to the friendliness value. <code>null</code> if there is no {@link Association} with the provided value.
      * @author 086
      */
-    public static Association byValue(double value) {
+    public static Association byExactValue(final double value) {
         return Arrays.stream(values()).filter(association -> association.getValue() == value).findAny().orElseGet(null);
     }
 
@@ -61,7 +61,7 @@ public enum Association {
      * @return      The {@link Association} with a friendliness value depending to the provided value
      * @author IronException
      */
-    public static Association convertValueToAssociation(double value) {
+    public static Association byValue(final double value) {
         if (value < 0) return Association.ENEMY;
         if (value > 0) return Association.ALLY;
         return Association.NEUTRAL;
