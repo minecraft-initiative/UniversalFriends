@@ -15,6 +15,19 @@ import java.util.stream.Collectors;
 public class Operations {
 
     /**
+     * Gives you a set of all players with that specific value.
+     * WARNING: This should not be used to get all friends or something like that. It's only there for completeness
+     *
+     * @param configuration the config.
+     * @param value that every player in the set should have.
+     * @param <T>
+     * @return all players that are saved as your enemy. No matter how hostile they are.
+     */
+    public static <T extends IPerson> Set<T> getByExactValue(final Configuration<T> configuration, final double value) {
+        return filterMatchingPersons(configuration, t -> t.getValue() == value);
+    }
+
+    /**
      * Gives you a set of all your friends. No matter how friendly they are.
      *
      * @param configuration the config.
