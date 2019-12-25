@@ -1,5 +1,6 @@
 package me.ironexception.universalfriends;
 
+import com.google.gson.GsonBuilder;
 import com.mojang.authlib.GameProfile;
 import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.json.Bounds;
@@ -23,6 +24,12 @@ public class UniversalFriends extends Configuration<GameProfilePerson> {
                     .<UniversalFriends, GameProfilePerson>loader(GameProfilePerson.class)
                     .withFactory((bounds, set) -> new UniversalFriends(bounds, new FriendsSet(set)))
                     .withDefaultPath()
+                    .withGson(() -> {
+                        GsonBuilder builder = new GsonBuilder();
+                        builder.registerTypeAdapter(GameProfilePerson.class, new GameProfilePersonAdapter());
+                        builder.setPrettyPrinting();
+                        return builder.create();
+                    })
                     .load();
         } catch (IOException | FriendFileLoaderException e) {
             e.printStackTrace();

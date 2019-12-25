@@ -35,4 +35,13 @@ class UniversalFriendsTest {
         assertTrue(personIsEqual.get(), "Correct person was retrieved");
     }
 
+    @Test
+    @DisplayName("GameProfile loads correctly")
+    public void testGameProfileAdapter() {
+        assertTrue(UniversalFriends.INSTANCE.getFriendList()
+                .stream()
+                .anyMatch(profilePerson ->
+                        profilePerson.getName().equals("foo") && profilePerson.getId().toString().equals("8a2a3ef5-8d27-41b9-a69a-cbb05ac0ed1d")));
+    }
+
 }

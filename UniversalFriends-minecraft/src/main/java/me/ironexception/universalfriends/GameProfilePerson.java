@@ -13,9 +13,14 @@ public class GameProfilePerson implements IPerson {
     private double value;
     private JsonObject meta;
 
-    public GameProfilePerson(GameProfile profile, double value) {
+    public GameProfilePerson(GameProfile profile, double value, JsonObject meta) {
         this.profile = profile;
         this.value = value;
+        this.meta = meta;
+    }
+
+    public GameProfilePerson(GameProfile profile, double value) {
+        this(profile, value, null);
     }
 
     public GameProfilePerson(GameProfile profile) {
