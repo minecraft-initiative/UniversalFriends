@@ -5,6 +5,7 @@ import me.ironexception.universalfriends.association.Association;
 import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.person.IPerson;
 
+import java.awt.font.NumericShaper;
 import java.util.Collections;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -35,6 +36,17 @@ public class Operations {
         return getInFriendlinessRange(configuration, Standard.STANDARD_MIN_FRIENDLINESS, Standard.STANDARD_NEUTRAL);
     }
 
+    /**
+     * Gives you a set with all players that are within the range you provided.
+     * Notice that when neutral (0) is within the range it can't return all players
+     * (Because everyone has that value and you can't return a theoretically infinite set). Only those that are stored.
+     *
+     * @param configuration the config.
+     * @param rangeLower the minimum friendliness value that can occur in the resulting set. It is including.
+     * @param rangeUpper the maximum friendliness value that can occur in the resulting set. It is including.
+     * @param <T>
+     * @return an immutable set with all players that are within the range.
+     */
     public static <T extends IPerson> Set<T> getInFriendlinessRange(Configuration<T> configuration, double rangeLower, double rangeUpper) {
         return filterMatchingPersons(configuration, t -> t.getValue() >= rangeLower && t.getValue() <= rangeUpper);
     }
