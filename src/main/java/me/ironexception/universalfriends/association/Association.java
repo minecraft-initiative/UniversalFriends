@@ -42,7 +42,7 @@ public enum Association {
     }
 
     /**
-     * Fetch a {@link Association} by its exact value.
+     * Fetch a {@link Association} by it's exact value.
      *
      * @param value The friendliness value
      * @return The association related to the friendliness value. <code>null</code> if there is no {@link Association} with the provided value.
@@ -53,7 +53,7 @@ public enum Association {
     }
 
     /**
-     * Fetch the {@link Association} convert value to association.
+     * Fetch a {@link Association} by what the value means.
      * No matter how friendly someone is as long as he is friendly he gets the ally association. The same goes for enemies.
      * So values below 0 are enemies and above are allies.
      *
