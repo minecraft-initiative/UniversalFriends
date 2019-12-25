@@ -53,19 +53,6 @@ public enum Association {
     }
 
     /**
-     * Fetch the {@link Association} closest to a friendliness value.
-     * <p>Edge cases: <code>0.5</code> becomes {@link Association#ALLY} and <code>-0.5</code> becomes {@link Association#ENEMY}</p>
-     * @param value The friendliness value
-     * @return      The {@link Association} with a friendliness value closest to the provided value
-     * @author 086
-     */
-    public static Association closestToValue(double value) {
-        if (value == Double.MIN_VALUE) return Association.ENEMY;
-        if (value == Double.MAX_VALUE) return Association.ALLY;
-        return Arrays.stream(values()).min(Comparator.comparingDouble(a -> Math.abs(a.value - value))).get();
-    }
-
-    /**
      * Fetch the {@link Association} convert value to association.
      * No matter how friendly someone is as long as he is friendly he gets the ally association. The same goes for enemies.
      * So values below 0 are enemies and above are allies.

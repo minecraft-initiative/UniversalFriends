@@ -17,14 +17,8 @@ public class Operations {
         return filterMatchingPersons(configuration, t -> t.getValue() == value);
     }
 
-    public static <T extends IPerson> Set<T> getByCloseToAssociation(Configuration<T> configuration, Association association) {
-        return filterMatchingPersons(configuration, t -> Association.closestToValue(t.getValue()) == association);
-    }
-
     /**
      * Gives you a set of all your friends. No matter how friendly they are.
-     * The difference to {@link Operations#getByCloseToAssociation} is that you also get players with the
-     * friendliness value between excluding 0 and 0.5.
      *
      * @param configuration the config.
      * @param <T>
@@ -36,8 +30,6 @@ public class Operations {
 
     /**
      * Gives you a set of all your enemies. No matter how hostile they are.
-     * The difference to {@link Operations#getByCloseToAssociation} is that you also get players with the
-     * friendliness value between -0.5 and excluding 0.
      *
      * @param configuration the config.
      * @param <T>
