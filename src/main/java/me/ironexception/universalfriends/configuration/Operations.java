@@ -40,7 +40,7 @@ public class Operations {
     public static <T extends IPerson> Set<T> getByAssociation(final Configuration<T> configuration, final Association association) {
         if (association == Association.ALLY) return getFriends(configuration);
         if (association == Association.ENEMY) return getEnemies(configuration);
-        return getByExactValue(configuration, 0);
+        return getByExactValue(configuration, association.getValue());
     }
 
 

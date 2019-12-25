@@ -62,8 +62,8 @@ public enum Association {
      * @author IronException
      */
     public static Association byValue(final double value) {
-        if (value < 0) return Association.ENEMY;
-        if (value > 0) return Association.ALLY;
+        if (value < Standard.STANDARD_NEUTRAL) return Association.ENEMY;
+        if (value > Standard.STANDARD_NEUTRAL) return Association.ALLY;
         return Association.NEUTRAL;
     }
 
