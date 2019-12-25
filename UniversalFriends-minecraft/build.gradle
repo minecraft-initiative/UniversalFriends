@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "Mojang"
+        url = "https://libraries.minecraft.net/"
+    }
+}
+
+dependencies {
+    implementation 'com.mojang:authlib:1.5.25'
+    implementation project(":UniversalFriends-core")
+}

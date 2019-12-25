@@ -37,10 +37,6 @@ public enum Association {
         this.value = value;
     }
 
-    public double getValue() {
-        return value;
-    }
-
     /**
      * Fetch a {@link Association} by its value.
      *
@@ -63,6 +59,10 @@ public enum Association {
         if (value == Double.MIN_VALUE) return Association.ENEMY;
         if (value == Double.MAX_VALUE) return Association.ALLY;
         return Arrays.stream(values()).min(Comparator.comparingDouble(a -> Math.abs(a.value - value))).get();
+    }
+
+    public double getValue() {
+        return value;
     }
 
 }

@@ -1,5 +1,6 @@
 package me.ironexception.universalfriends.person;
 
+import com.google.gson.JsonObject;
 import me.ironexception.universalfriends.association.Association;
 
 import java.util.UUID;
@@ -28,10 +29,16 @@ public class Person implements IPerson {
      */
     private double value;
 
-    public Person(final UUID id, final String name, final double value) {
+    /**
+     * The metadata for this person
+     */
+    private final JsonObject meta;
+
+    public Person(final UUID id, final String name, final double value, JsonObject meta) {
         this.id = id;
         this.name = name;
         this.value = value;
+        this.meta = meta;
     }
 
     @Override
@@ -45,8 +52,18 @@ public class Person implements IPerson {
     }
 
     @Override
+    public JsonObject getMeta() {
+        return meta;
+    }
+
+    @Override
     public double getValue() {
         return value;
+    }
+
+    @Override
+    public void setValue(final double value) {
+        this.value = value;
     }
 
     /**
@@ -58,12 +75,6 @@ public class Person implements IPerson {
     public Association getAssociation() {
         return getValue() == 0 ? Association.NEUTRAL : (getValue() > 0) ? Association.ALLY : Association.ENEMY;
     }
-
-    @Override
-    public void setValue(final double value) {
-        this.value = value;
-    }
-
 
     /**
      * Converts the enum into the value.

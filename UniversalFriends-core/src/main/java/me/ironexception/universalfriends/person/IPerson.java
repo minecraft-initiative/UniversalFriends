@@ -1,5 +1,6 @@
 package me.ironexception.universalfriends.person;
 
+import com.google.gson.JsonObject;
 import me.ironexception.universalfriends.association.Association;
 
 import java.util.UUID;
@@ -20,14 +21,14 @@ public interface IPerson {
     UUID getId();
 
     /**
+     * @return The person's metadata
+     */
+    JsonObject getMeta();
+
+    /**
      * @return The user's value to the person.
      */
     double getValue();
-
-    /**
-     * @return The user's association with the person.
-     */
-    Association getAssociation();
 
     /**
      * Changes the user's value to the person.
@@ -35,6 +36,11 @@ public interface IPerson {
      * @param value The new value.
      */
     void setValue(double value);
+
+    /**
+     * @return The user's association with the person.
+     */
+    Association getAssociation();
 
     /**
      * Changes the user's association with the person.
