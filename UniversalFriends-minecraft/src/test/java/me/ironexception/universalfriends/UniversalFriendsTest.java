@@ -38,10 +38,19 @@ class UniversalFriendsTest {
     @Test
     @DisplayName("GameProfile loads correctly")
     public void testGameProfileAdapter() {
-        assertTrue(UniversalFriends.INSTANCE.getFriendList()
+        UniversalFriends.INSTANCE.getFriendList()
                 .stream()
-                .anyMatch(profilePerson ->
-                        profilePerson.getName().equals("foo") && profilePerson.getId().toString().equals("8a2a3ef5-8d27-41b9-a69a-cbb05ac0ed1d")));
+                .findAny().ifPresent(person -> {
+                    boolean nameCorrect = person.getName().equals("foo");
+                    boolean idCorrect = person.getId().toString().equals("8a2a3ef5-8d27-41b9-a69a-cbb05ac0ed1d");
+                    boolean valueCorrect = person.getValue() == 0;
+                    boolean metaCorrect = person.getMeta().has("displayName") && person.getMeta().get("displayName").getAsString().equals("bar");
+
+                    assertTrue(nameCorrect);
+                    assertTrue(idCorrect);
+                    assertTrue(metaCorrect);
+                    assertTrue(valueCorrect);
+                });
     }
 
 }
