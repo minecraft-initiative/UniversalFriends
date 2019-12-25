@@ -27,6 +27,23 @@ public class Operations {
         return filterMatchingPersons(configuration, t -> t.getValue() == value);
     }
 
+
+    /**
+     * Gives you a set of all players that fit the association. This means that when the association is friends eg
+     * all players that are your friend get returned. It wouldn't make much sense to only return players with the value of 1 instead.
+     *
+     * @param configuration the config.
+     * @param association the association that the set of players that get returned should fit.
+     * @param <T>
+     * @return all players that fit the association.
+     */
+    public static <T extends IPerson> Set<T> getByAssociation(final Configuration<T> configuration, final Association association) {
+        if (association == Association.ALLY) return getFriends(configuration);
+        if (association == Association.ENEMY) return getEnemies(configuration);
+        return getByExactValue(configuration, 0);
+    }
+
+
     /**
      * Gives you a set of all your friends. No matter how friendly they are.
      *
