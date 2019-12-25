@@ -16,10 +16,6 @@ public class Operations {
         return filterMatchingPersons(configuration, t -> t.getValue() == value);
     }
 
-    public static <T extends IPerson> Set<T> getByCloseToAssociation(Configuration<T> configuration, Association association) {
-        return filterMatchingPersons(configuration, t -> Association.closestToValue(t.getValue()) == association);
-    }
-
     public static <T extends IPerson> Set<T> getByAssociation(Configuration<T> configuration, Association association) {
         double value = association.getValue();
         return getByFriendliness(configuration, value);

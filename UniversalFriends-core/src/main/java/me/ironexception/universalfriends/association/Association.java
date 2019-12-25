@@ -44,21 +44,31 @@ public enum Association {
      * @return The association related to the friendliness value. <code>null</code> if there is no {@link Association} with the provided value.
      * @author 086
      */
-    public static Association byValue(double value) {
+    public static Association byExactValue(double value) {
         return Arrays.stream(values()).filter(association -> association.getValue() == value).findAny().orElseGet(null);
     }
 
     /**
-     * Fetch the {@link Association} closest to a friendliness value.
-     * <p>Edge cases: <code>0.5</code> becomes {@link Association#ALLY} and <code>-0.5</code> becomes {@link Association#ENEMY}</p>
+     * Fetch a {@link Association} by what the value means.
+     * <ul>
+     *     <li>
+     *         If the provided value is lower than the standardised neutral value, this method will return {@link Association#ENEMY}
+     *     </li>
+     *     <li>
+     *         If the provided value is higher than the standardised neutral value, this method will return {@link Association#ALLY}
+     *     </li>
+     *     <li>
+     *         If the provided value is equal to the standardised neutral value, this method will return {@link Association#NEUTRAL}
+     *     </li>
+     * </ul>
      * @param value The friendliness value
-     * @return      The {@link Association} with a friendliness value closest to the provided value
-     * @author 086
+     * @return      The {@link Association} with a friendliness value depending to the provided value
+     * @author IronException
      */
-    public static Association closestToValue(double value) {
-        if (value == Double.MIN_VALUE) return Association.ENEMY;
-        if (value == Double.MAX_VALUE) return Association.ALLY;
-        return Arrays.stream(values()).min(Comparator.comparingDouble(a -> Math.abs(a.value - value))).get();
+    public static Association byValue(final double value) {
+        if (value < Standard.STANDARD_NEUTRAL) return Association.ENEMY;
+        if (value > Standard.STANDARD_NEUTRAL) return Association.ALLY;
+        return Association.NEUTRAL;
     }
 
     public double getValue() {
