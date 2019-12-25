@@ -15,13 +15,12 @@ import java.util.stream.Collectors;
 public class Operations {
 
     /**
-     * Gives you a set of all players with that specific value.
-     * WARNING: This should not be used to get all friends or something like that. It's only there for completeness
+     * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} whose friendliness value is equal to the provided value.
      *
-     * @param configuration the config.
-     * @param value that every player in the set should have.
-     * @param <T>
-     * @return all players that are saved as your enemy. No matter how hostile they are.
+     * @param configuration The {@link Configuration} to mutate
+     * @param value         The {@link double} all {@link IPerson}s should have.
+     * @param <T>           The type of {@link IPerson} this configuration holds
+     * @return              The mutated {@link Configuration}
      */
     public static <T extends IPerson> Set<T> getByExactValue(final Configuration<T> configuration, final double value) {
         return filterMatchingPersons(configuration, t -> t.getValue() == value);
@@ -29,8 +28,8 @@ public class Operations {
 
 
     /**
-     * Gives you a set of all players that fit the association. This means that when the association is friends eg
-     * all players that are your friend get returned. It wouldn't make much sense to only return players with the value of 1 instead.
+     * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} whose friendliness value fits the provided association.
+     *
      *
      * @param configuration the config.
      * @param association the association that the set of players that get returned should fit.
@@ -45,6 +44,7 @@ public class Operations {
 
 
     /**
+     * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} whose friendliness value is equal to the provided value.
      * Gives you a set of all your friends. No matter how friendly they are.
      *
      * @param configuration the config.
