@@ -15,12 +15,14 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 public class FriendFileLoader<T extends Configuration<S>, S extends IPerson> {
 
     private BiFunction<Bounds, Set<S>, T> factory;
     private Path readPath;
     private Class<S> personClass;
+    private Supplier<Gson> gsonSupplier = Gson::new;
 
     private FriendFileLoader(Class<S> personClass) {
         this.personClass = personClass;
@@ -57,8 +59,13 @@ public class FriendFileLoader<T extends Configuration<S>, S extends IPerson> {
         return withPath(Paths.get(Standard.STANDARD_FILE_NAME));
     }
 
+    public FriendFileLoader<T, S> withGson(Supplier<Gson> gsonSupplier) {
+        this.gsonSupplier = gsonSupplier;
+        return this;
+    }
+
     public T load() throws IOException, FriendFileLoaderException {
-        final Gson gson = new Gson();
+        final Gson gson = gsonSupplier.get();
         JsonObject rootObject = tryAsObject(new JsonParser().parse(new BufferedReader(new InputStreamReader(Files.newInputStream(this.readPath)))), "Root element of friends file must be a JSON object");
         JsonObject boundsObject = tryAsObject(rootObject.get("bounds"), "Bounds element of friends file must be a JSON object");
         Bounds bounds = gson.fromJson(boundsObject, Bounds.class);
