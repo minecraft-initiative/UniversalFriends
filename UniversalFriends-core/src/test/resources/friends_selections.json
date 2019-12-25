@@ -1,0 +1,33 @@
+{
+  "bounds": {
+    "minimum": -2,
+    "maximum": 2
+  },
+  "list": [
+    {
+      "id": "8a2a3ef5-8d27-41b9-a69a-cbb05ac0ed1d",
+      "name": "Alice",
+      "value": 0
+    },
+    {
+      "id": "2ccc9554-2679-11ea-978f-2e728ce88125",
+      "name": "John",
+      "value": 2
+    },
+    {
+      "id": "8a2a3ef5-8d27-41b9-978f-2e728ce88125",
+      "name": "Ben",
+      "value": -1
+    },
+    {
+      "id": "f1d4ba3b-1809-4012-b5ec-840a541db399",
+      "name": "Mark",
+      "value": 1
+    },
+    {
+      "id": "a43a3d75-cd23-43a7-8fce-daf02b578bac",
+      "name": "Jack",
+      "value": -2
+    }
+  ]
+}
