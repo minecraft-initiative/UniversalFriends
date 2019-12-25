@@ -13,10 +13,6 @@ import java.util.stream.Collectors;
 
 public class Operations {
 
-    public static <T extends IPerson> Set<T> getByFriendliness(Configuration<T> configuration, double value) {
-        return filterMatchingPersons(configuration, t -> t.getValue() == value);
-    }
-
     /**
      * Gives you a set of all your friends. No matter how friendly they are.
      *
@@ -37,11 +33,6 @@ public class Operations {
      */
     public static <T extends IPerson> Set<T> getAllEnemies(final Configuration<T> configuration) {
         return getInFriendlinessRange(configuration, Standard.STANDARD_MIN_FRIENDLINESS, Standard.STANDARD_NEUTRAL);
-    }
-
-    public static <T extends IPerson> Set<T> getByAssociation(Configuration<T> configuration, Association association) {
-        double value = association.getValue();
-        return getByFriendliness(configuration, value);
     }
 
     public static <T extends IPerson> Set<T> getInFriendlinessRange(Configuration<T> configuration, double rangeLower, double rangeUpper) {
