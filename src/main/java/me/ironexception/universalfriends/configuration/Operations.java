@@ -44,9 +44,8 @@ public class Operations {
 
 
     /**
-     * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} whose friendliness value is equal to the provided value.
-     * Gives you a set of all your friends. No matter how friendly they are.
-     *
+     * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} that are marked as friends.
+     * 
      * @param configuration The {@link Configuration} to mutate.
      * @param <T>           The type of {@link IPerson} this configuration holds.
      * @return              The mutated {@link Configuration}.
@@ -56,8 +55,8 @@ public class Operations {
     }
 
     /**
-     * Gives you a set of all your enemies. No matter how hostile they are.
-     *
+     * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} that are marked as enemies.
+     * 
      * @param configuration The {@link Configuration} to mutate.
      * @param <T>           The type of {@link IPerson} this configuration holds.
      * @return              The mutated {@link Configuration}.
