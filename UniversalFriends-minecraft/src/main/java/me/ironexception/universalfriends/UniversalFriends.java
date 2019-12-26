@@ -104,7 +104,7 @@ public class UniversalFriends extends Configuration<GameProfilePerson> {
 
     /**
      * Creates a {@link Selector} for {@link UniversalFriends}'s {@link UniversalFriends#INSTANCE}
-     * @return
+     * @return The selector
      */
     public static Selector<GameProfilePerson, UniversalFriends> selector() {
         return Selector.create(UniversalFriends.INSTANCE);
