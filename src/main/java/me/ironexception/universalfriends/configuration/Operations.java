@@ -111,10 +111,10 @@ public class Operations {
      *     <li>2</li>
      * </ul>
      *
-     * @param configuration The {@link Configuration} to mutate
-     * @param person        The {@link IPerson} to add
-     * @param <T>           The type of {@link IPerson} this configuration holds
-     * @return              The mutated {@link Configuration}
+     * @param configuration The {@link Configuration} to mutate.
+     * @param person        The {@link IPerson} to add.
+     * @param <T>           The type of {@link IPerson} this configuration holds.
+     * @return              The mutated {@link Configuration}.
      */
     public static <T extends IPerson> Configuration<T> introduceNewSafe(Configuration<T> configuration, T person) {
         Bounds bounds = configuration.getBounds();
@@ -134,11 +134,12 @@ public class Operations {
     }
 
     /**
-     * Halves every friendliness value within a configuration
+     * Halves every friendliness value within a configuration.
+     * 
      * @see Operations#multiplyFriendlinessValues(Configuration, double)
-     * @param configuration The {@link Configuration} to mutate
-     * @param <T>           The type of {@link IPerson} this configuration holds
-     * @return              The mutated {@link Configuration}
+     * @param configuration The {@link Configuration} to mutate.
+     * @param <T>           The type of {@link IPerson} this configuration holds.
+     * @return              The mutated {@link Configuration}.
      */
     public static <T extends IPerson> Configuration<T> halveFriendlinessValues(Configuration<T> configuration) {
         return multiplyFriendlinessValues(configuration, 0.5d);
@@ -146,10 +147,11 @@ public class Operations {
 
     /**
      * Mutates a configuration, multiplying all person's friendliness values by a given multiplier.
-     * @param configuration The {@link Configuration} to mutate
-     * @param multiplier    The multiplier to multiply the friendliness values by
-     * @param <T>           The type of {@link IPerson} this configuration holds
-     * @return              The mutated {@link Configuration}
+     * 
+     * @param configuration The {@link Configuration} to mutate.
+     * @param multiplier    The multiplier to multiply the friendliness values by.
+     * @param <T>           The type of {@link IPerson} this configuration holds.
+     * @return              The mutated {@link Configuration}.
      */
     public static <T extends IPerson> Configuration<T> multiplyFriendlinessValues(Configuration<T> configuration, double multiplier) {
         consume(configuration, t -> {
