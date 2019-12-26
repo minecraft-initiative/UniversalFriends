@@ -20,7 +20,7 @@ public class Operations {
      * @param configuration The {@link Configuration} to mutate.
      * @param value         The {@link double} all {@link IPerson}s should have.
      * @param <T>           The type of {@link IPerson} this configuration holds.
-     * @return              The mutated {@link Configuration}.
+     * @return              The mutated immutable {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getByExactValue(final Configuration<T> configuration, final double value) {
         return filterMatchingPersons(configuration, t -> t.getValue() == value);
@@ -34,7 +34,7 @@ public class Operations {
      * @param configuration The {@link Configuration} to mutate.
      * @param association   The {@link Association} all {@link IPerson}s should have.
      * @param <T>           The type of {@link IPerson} this configuration holds.
-     * @return              The mutated {@link Configuration}.
+     * @return              The mutated immutable {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getByAssociation(final Configuration<T> configuration, final Association association) {
         if (association == Association.ALLY) return getFriends(configuration);
@@ -48,7 +48,7 @@ public class Operations {
      * 
      * @param configuration The {@link Configuration} to mutate.
      * @param <T>           The type of {@link IPerson} this configuration holds.
-     * @return              The mutated {@link Configuration}.
+     * @return              The mutated immutable {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getFriends(final Configuration<T> configuration) {
         return filterMatchingPersons(configuration, t -> t.getValue() > Standard.STANDARD_NEUTRAL);
@@ -59,22 +59,20 @@ public class Operations {
      * 
      * @param configuration The {@link Configuration} to mutate.
      * @param <T>           The type of {@link IPerson} this configuration holds.
-     * @return              The mutated {@link Configuration}.
+     * @return              The mutated immutable {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getEnemies(final Configuration<T> configuration) {
         return filterMatchingPersons(configuration, t -> t.getValue() < Standard.STANDARD_NEUTRAL);
     }
 
     /**
-     * Gives you a set with all players that are within the range you provided.
-     * Notice that when neutral (0) is within the range it can't return all players
-     * (Because everyone has that value and you can't return a theoretically infinite set). Only those that are stored.
-     *
-     * @param configuration the config.
-     * @param rangeLower the minimum friendliness value that can occur in the resulting set. It is including.
-     * @param rangeUpper the maximum friendliness value that can occur in the resulting set. It is including.
-     * @param <T>
-     * @return an immutable set with all players that are within the range.
+     * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} that are marked as enemies.
+     * 
+     * @param configuration The {@link Configuration} to mutate.
+     * @param rangeLower    The minimum friendliness value that can occur in the resulting set. It is including.
+     * @param rangeUpper    The maximum friendliness value that can occur in the resulting set. It is including.
+     * @param <T>           The type of {@link IPerson} this configuration holds.
+     * @return              The mutated immutable {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getInFriendlinessRange(Configuration<T> configuration, double rangeLower, double rangeUpper) {
         return filterMatchingPersons(configuration, t -> t.getValue() >= rangeLower && t.getValue() <= rangeUpper);
