@@ -42,7 +42,7 @@ public enum Association {
     }
 
     /**
-     * Fetch a {@link Association} by it's exact value.
+     * Fetch a {@link Association} by its exact value.
      *
      * @param value The friendliness value
      * @return The association related to the friendliness value. <code>null</code> if there is no {@link Association} with the provided value.
