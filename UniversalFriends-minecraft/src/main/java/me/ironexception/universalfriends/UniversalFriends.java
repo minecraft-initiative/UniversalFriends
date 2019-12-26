@@ -6,6 +6,7 @@ import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.json.FriendFileLoader;
 import me.ironexception.universalfriends.json.FriendFileLoaderException;
+import me.ironexception.universalfriends.select.Selector;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -99,6 +100,14 @@ public class UniversalFriends extends Configuration<GameProfilePerson> {
      */
     public static void installRemoveCallback(Consumer<GameProfilePerson> consumer) {
         ((FriendsSet) UniversalFriends.INSTANCE.getFriendList()).removeCallbacks.add(consumer);
+    }
+
+    /**
+     * Creates a {@link Selector} for {@link UniversalFriends}'s {@link UniversalFriends#INSTANCE}
+     * @return The selector
+     */
+    public static Selector<GameProfilePerson, UniversalFriends> selector() {
+        return Selector.create(UniversalFriends.INSTANCE);
     }
 
 }

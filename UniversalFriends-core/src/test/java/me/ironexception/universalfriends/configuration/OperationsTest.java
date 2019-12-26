@@ -38,12 +38,6 @@ class OperationsTest {
     }
 
     @Test
-    @DisplayName("Get by close to association")
-    void getByCloseToAssociation() {
-        assertEquals("bar", Operations.getByCloseToAssociation(configuration, Association.ALLY).stream().findAny().get().getName());
-    }
-
-    @Test
     @DisplayName("Get by association")
     void getByAssociation() {
         assertEquals("baz", Operations.getByAssociation(configuration, Association.ENEMY).stream().findAny().get().getName());
