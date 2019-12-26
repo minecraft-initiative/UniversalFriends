@@ -17,10 +17,10 @@ public class Operations {
     /**
      * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} whose friendliness value is equal to the provided value.
      *
-     * @param configuration The {@link Configuration} to mutate
+     * @param configuration The {@link Configuration} to mutate.
      * @param value         The {@link double} all {@link IPerson}s should have.
-     * @param <T>           The type of {@link IPerson} this configuration holds
-     * @return              The mutated {@link Configuration}
+     * @param <T>           The type of {@link IPerson} this configuration holds.
+     * @return              The mutated {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getByExactValue(final Configuration<T> configuration, final double value) {
         return filterMatchingPersons(configuration, t -> t.getValue() == value);
@@ -31,10 +31,10 @@ public class Operations {
      * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} whose friendliness value fits the provided association.
      *
      *
-     * @param configuration the config.
-     * @param association the association that the set of players that get returned should fit.
-     * @param <T>
-     * @return all players that fit the association.
+     * @param configuration The {@link Configuration} to mutate.
+     * @param association   The {@link Association} all {@link IPerson}s should have.
+     * @param <T>           The type of {@link IPerson} this configuration holds.
+     * @return              The mutated {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getByAssociation(final Configuration<T> configuration, final Association association) {
         if (association == Association.ALLY) return getFriends(configuration);
@@ -47,9 +47,9 @@ public class Operations {
      * Returns an immutable {@link Set} of all persons in the provided {@link Configuration} whose friendliness value is equal to the provided value.
      * Gives you a set of all your friends. No matter how friendly they are.
      *
-     * @param configuration the config.
-     * @param <T>
-     * @return all players that are saved as your friends. No matter how friendly they are.
+     * @param configuration The {@link Configuration} to mutate.
+     * @param <T>           The type of {@link IPerson} this configuration holds.
+     * @return              The mutated {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getFriends(final Configuration<T> configuration) {
         return filterMatchingPersons(configuration, t -> t.getValue() > Standard.STANDARD_NEUTRAL);
@@ -58,9 +58,9 @@ public class Operations {
     /**
      * Gives you a set of all your enemies. No matter how hostile they are.
      *
-     * @param configuration the config.
-     * @param <T>
-     * @return all players that are saved as your enemy. No matter how hostile they are.
+     * @param configuration The {@link Configuration} to mutate.
+     * @param <T>           The type of {@link IPerson} this configuration holds.
+     * @return              The mutated {@link Configuration}.
      */
     public static <T extends IPerson> Set<T> getEnemies(final Configuration<T> configuration) {
         return filterMatchingPersons(configuration, t -> t.getValue() < Standard.STANDARD_NEUTRAL);
