@@ -1,11 +1,13 @@
 package me.ironexception.universalfriends;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.authlib.GameProfile;
 import me.ironexception.universalfriends.configuration.Configuration;
 import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.json.FriendFileLoader;
 import me.ironexception.universalfriends.json.FriendFileLoaderException;
+import me.ironexception.universalfriends.json.FriendFileSaver;
 import me.ironexception.universalfriends.select.Selector;
 
 import java.io.IOException;
@@ -17,6 +19,9 @@ import java.util.function.Function;
 public class UniversalFriends extends Configuration<GameProfilePerson> {
 
     public static UniversalFriends INSTANCE;
+
+    public boolean saving = true;
+    private final Gson gson;
 
     static {
 
@@ -39,12 +44,36 @@ public class UniversalFriends extends Configuration<GameProfilePerson> {
                     Standard.STANDARD_MIN_FRIENDLINESS,
                     Standard.STANDARD_MAX_FRIENDLINESS
             ), new HashSet<>());
+        } finally {
+            UniversalFriends.installAddCallback(profilePerson -> {
+                if (UniversalFriends.INSTANCE.saving) {
+                    try {
+                        UniversalFriends.INSTANCE.save();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            UniversalFriends.installRemoveCallback(profilePerson -> {
+                if (UniversalFriends.INSTANCE.saving) {
+                    try {
+                        UniversalFriends.INSTANCE.save();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
 
     }
 
     private UniversalFriends(Bounds bounds, Set<GameProfilePerson> set) {
         super(bounds, set);
+
+        this.gson = new GsonBuilder()
+                .registerTypeAdapter(GameProfilePerson.class, new GameProfilePersonAdapter())
+                .setPrettyPrinting()
+                .create();
     }
 
     /**
@@ -100,6 +129,18 @@ public class UniversalFriends extends Configuration<GameProfilePerson> {
      */
     public static void installRemoveCallback(Consumer<GameProfilePerson> consumer) {
         ((FriendsSet) UniversalFriends.INSTANCE.getFriendList()).removeCallbacks.add(consumer);
+    }
+
+    public void save() throws IOException {
+        FriendFileSaver.save(this, this.gson);
+    }
+
+    public boolean isSaving() {
+        return saving;
+    }
+
+    public void setSaving(boolean saving) {
+        this.saving = saving;
     }
 
     /**
