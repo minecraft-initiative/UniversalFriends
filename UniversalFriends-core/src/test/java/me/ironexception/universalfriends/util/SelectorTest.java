@@ -1,4 +1,4 @@
-package me.ironexception.universalfriends.select;
+package me.ironexception.universalfriends.util;
 
 import me.ironexception.universalfriends.TestUtil;
 import me.ironexception.universalfriends.association.Association;
@@ -7,7 +7,6 @@ import me.ironexception.universalfriends.json.FriendFileLoader;
 import me.ironexception.universalfriends.json.FriendFileLoaderException;
 import me.ironexception.universalfriends.person.Person;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

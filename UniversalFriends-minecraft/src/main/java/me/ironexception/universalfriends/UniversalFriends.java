@@ -8,7 +8,7 @@ import me.ironexception.universalfriends.json.Bounds;
 import me.ironexception.universalfriends.json.FriendFileLoader;
 import me.ironexception.universalfriends.json.FriendFileLoaderException;
 import me.ironexception.universalfriends.json.FriendFileSaver;
-import me.ironexception.universalfriends.select.Selector;
+import me.ironexception.universalfriends.util.Selector;
 
 import java.io.IOException;
 import java.util.HashSet;
