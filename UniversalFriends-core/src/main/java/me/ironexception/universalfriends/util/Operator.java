@@ -1,4 +1,4 @@
-package me.ironexception.universalfriends.select;
+package me.ironexception.universalfriends.util;
 
 import me.ironexception.universalfriends.Standard;
 import me.ironexception.universalfriends.association.Association;
@@ -79,7 +79,7 @@ public class Operator<P extends IPerson, T extends Configuration<P>> {
      * @return  The {@link Set} the selection provided
      */
     public Set<P> selectMatchingAll() {
-        return select(p -> predicates.stream().allMatch(predicate -> predicate.test(p)));
+        return operate(p -> predicates.stream().allMatch(predicate -> predicate.test(p)));
     }
 
     /**
@@ -87,7 +87,7 @@ public class Operator<P extends IPerson, T extends Configuration<P>> {
      * @return  The {@link Set} the selection provided
      */
     public Set<P> selectMatchingNone() {
-        return select(p -> predicates.stream().noneMatch(predicate -> predicate.test(p)));
+        return operate(p -> predicates.stream().noneMatch(predicate -> predicate.test(p)));
     }
 
     /**
@@ -95,7 +95,7 @@ public class Operator<P extends IPerson, T extends Configuration<P>> {
      * @return  The {@link Set} the selection provided
      */
     public Set<P> selectMatchingAny() {
-        return select(p -> predicates.stream().anyMatch(predicate -> predicate.test(p)));
+        return operate(p -> predicates.stream().anyMatch(predicate -> predicate.test(p)));
     }
 
     private Set<P> operate(Predicate<P> predicate) {
