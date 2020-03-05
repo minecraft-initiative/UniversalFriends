@@ -18,6 +18,12 @@ public class FriendsSet extends HashSet<GameProfilePerson> {
         removeCallbacks = new HashSet<>();
     }
 
+    /**
+     * Adds a GameProfilePerson representing a friend's profile to user's profile
+     *
+     * @param gameProfilePerson GameProfilePerson to be added to as a friend to user's account
+     * @return boolean Gives caller indication of successful add of GameProfilePerson to their account
+     */
     @Override
     public boolean add(GameProfilePerson gameProfilePerson) {
         boolean added = super.add(gameProfilePerson);
@@ -27,6 +33,12 @@ public class FriendsSet extends HashSet<GameProfilePerson> {
         return added;
     }
 
+    /**
+     * Removes a GameProfilePerson representing a friend from user's profile
+     *
+     * @param o Represents a GameProfilePerson to be removed
+     * @return boolean Gives caller indication of successful removal of GameProfilePerson from their account
+     */
     @Override
     public boolean remove(Object o) {
         boolean removed = super.remove(o);
